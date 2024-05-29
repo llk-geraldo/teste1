@@ -58,7 +58,7 @@ while True:
             if DEVICE >=2:
                 # camera = VideoStream(src=DEVICE, usePiCamera=False, resolution=(1280, 720)).start()
                 camera = acapture.open(DEVICE)
-                aux_flagCamera = camera.grabbed
+                aux_flagCamera = True
             else:
                 aux_flagCamera = False
         except:
@@ -66,8 +66,8 @@ while True:
             print(f"Erro conexão câmera: {e} - {exception_traceback.tb_lineno}")
     # Sucesso na conexão à câmera USB
     try:
-        image = camera.read()
-        if image is not None:
+        check, image = camera.read()
+        if check:
             frame = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
             # Seleção de apenas um dos canais (canal R, assumindo BGR) da imagem
