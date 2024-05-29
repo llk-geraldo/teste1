@@ -21,6 +21,7 @@ from flask import (
     session,
     url_for,
 )
+import acapture
 
 aux_flagCamera = False
 
@@ -55,7 +56,8 @@ while True:
         # Inicialização da câmera
         try:
             if DEVICE >=2:
-                camera = VideoStream(src=DEVICE, usePiCamera=False, resolution=(1280, 720)).start()
+                # camera = VideoStream(src=DEVICE, usePiCamera=False, resolution=(1280, 720)).start()
+                camera = acapture.open(DEVICE)
                 aux_flagCamera = camera.grabbed
             else:
                 aux_flagCamera = False
