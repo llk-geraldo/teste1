@@ -78,7 +78,7 @@ while True:
             frameThreshold = cv2.inRange(frame, 255, 255)
 
             # Dilatação da imagem para ocultar furos
-            frameThreshold = cv2.dilate(frameThreshold, np.ones((2,3), np.uint8), iterations=aux_params['dilatacao'])
+            frameThreshold = cv2.dilate(frameThreshold, np.ones((2,3), np.uint8), iterations=1)
 
             # Detecção da linha média do laser
             aux_linhaMedia = []
